@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaUserCircle, FaCog, FaSignOutAlt, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast, ToastContainer } from 'react-toastify'; // Toast
-import 'react-toastify/dist/ReactToastify.css'; // Toast CSS
+import { toast, ToastContainer } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,7 @@ export default function Profile() {
       toast.error('Password minimal 6 karakter');
       return;
     }
-    setUser({ name: 'John Doe' });
+    setUser({ name: 'Azmi' });
     setShowLoginModal(false);
     toast.success('Login berhasil!');
   };
@@ -69,7 +69,7 @@ export default function Profile() {
 
   return (
     <div className="relative ml-4" ref={dropdownRef}>
-      {/* Icon User */}
+      {/* icon profile */}
       <div 
         className="text-5xl text-gray-500 cursor-pointer hover:text-gray-700 transition-transform duration-200 hover:scale-110"
         onClick={() => setIsOpen(!isOpen)}
@@ -77,7 +77,7 @@ export default function Profile() {
         <FaUserCircle />
       </div>
 
-      {/* Dropdown Menu */}
+      {/* dropdown menu */}
       <div 
         className={`absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-1 z-50 border border-gray-100
           transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
@@ -86,7 +86,7 @@ export default function Profile() {
       >
         {user ? (
           <>
-            {/* Jika sudah login */}
+            {/* kalo sudah login*/}
             <div className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors duration-200" onClick={handleProfile}>
               <FaUserCircle className="text-gray-400 text-base" /> 
               <span className="font-medium">Profile</span>
@@ -103,7 +103,7 @@ export default function Profile() {
           </>
         ) : (
           <>
-            {/* Jika belum login */}
+            {/* kalo belum login */}
             <div className="flex items-center gap-3 px-4 py-3 text-sm text-green-600 hover:bg-gray-50 cursor-pointer transition-colors duration-200" onClick={handleLogin}>
               <FaSignInAlt className="text-base" /> 
               <span className="font-medium">Login</span>
@@ -116,7 +116,7 @@ export default function Profile() {
         )}
       </div>
 
-      {/* Modal Login */}
+      {/* jika menekan tombol login */}
       <AnimatePresence>
         {showLoginModal && (
           <motion.div 
@@ -131,7 +131,7 @@ export default function Profile() {
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
             >
-              <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+              <h2 className="text-2xl font-bold mb-3 text-center">Login</h2>
               <form onSubmit={submitLogin} className="space-y-4">
                 <input 
                   type="email" 
@@ -167,7 +167,7 @@ export default function Profile() {
         )}
       </AnimatePresence>
 
-      {/* Modal Register */}
+      {/* jika menekan tombol register */}
       <AnimatePresence>
         {showRegisterModal && (
           <motion.div 
@@ -226,7 +226,6 @@ export default function Profile() {
         )}
       </AnimatePresence>
 
-      {/* Toast Container */}
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
     </div>
   );

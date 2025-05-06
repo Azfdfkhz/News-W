@@ -4,21 +4,21 @@ import MainContent from "../components/MainContent";
 import Navigation from "../components/Navigation";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("Headlines"); // Manage active tab state
+  const [activeTab, setActiveTab] = useState("Headlines"); 
 
-  // Function to render content based on active tab
+
   const renderContent = () => {
     if (activeTab === "Headlines") {
-      return <MainContent />; // Render MainContent for Headlines tab
+      return <MainContent />; 
     }
-    // Add additional conditions for other tabs here, if necessary
+
   };
 
   return (
     <div className="min-h-screen bg-[#bdbdbd] flex flex-col font-sans">
-      <Header /> {/* This component stays at the top */}
-      <Navigation setActiveTab={setActiveTab} /> {/* Navigation now handles tab switching */}
-      {renderContent()} {/* Render the content based on active tab */}
+      <Header /> 
+      <Navigation setActiveTab={setActiveTab} />
+      {renderContent()}
     </div>
   );
 }

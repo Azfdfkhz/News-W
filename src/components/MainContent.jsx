@@ -1,6 +1,6 @@
-export default function MainContent() {
+export default function MainContent () {
     return (
-      <main className="flex-1 flex items-center justify-center bg-[#bdbdbd]">
+      <main className="flex-grow p-6 bg-gray-300 overflow-auto min-h-screen">
         <div className="w-full text-right px-8"> 
           <h1 className="text-6xl md:text-7xl font-extrabold text-gray-800 leading-tight">
             Cold,<br />

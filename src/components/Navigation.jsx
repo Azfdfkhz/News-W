@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function Navigation() {
   const [activeTab, setActiveTab] = useState("Home");
   const scrollingText = "ini teks berjalan nya disini ";
-
+  
   const tabs = ["Home", "Latest News", "Trending"];
 
   return (
@@ -23,7 +23,7 @@ export default function Navigation() {
         ))}
       </div>
 
-      {/* Headlines section */}
+      {/* Headlines */}
       <div className="ml-auto flex items-center">
         <div className="relative flex items-center w-[300px] md:w-[400px] h-10 bg-gray-300 rounded-full overflow-hidden px-4">
           {/* Icon + Headlines */}
@@ -32,7 +32,7 @@ export default function Navigation() {
             <span className="text-sm font-semibold text-gray-700">Headlines</span>
           </div>
 
-          {/* Garis pemisah */}
+          {/* Garis pemisah (line) */}
           <div className="h-6 w-px bg-gray-500 mx-2 shrink-0"></div>
 
           {/* Teks berjalan */}
