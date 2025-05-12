@@ -8,6 +8,7 @@ import Robotic from "./halaman/Robotic";
 import Cybersecurity from "./halaman/Cybersecurity";
 import Error from "./halaman/Error";
 import IOT from "./halaman/IOT";
+import EdTech from "./halaman/EdTech";
 
 function AppRoutes() {
   return (
@@ -30,6 +31,7 @@ function AppRoutes() {
         <Route path="/News-W/Cybersecurity" element={<Cybersecurity />} />
         <Route path="/News-W/IOT" element={<IOT />} />
         <Route path="/News-W/error" element={<Error />} />
+        <Route path="/News-W/EdTech" element={<EdTech />} />
       </Routes>
     </div>
   );

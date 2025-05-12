@@ -69,164 +69,164 @@ export default function Profile() {
 
   return (
     <div className="relative ml-4" ref={dropdownRef}>
-      {/* icon profile */}
-      <div 
-        className="text-5xl text-gray-500 cursor-pointer hover:text-gray-700 transition-transform duration-200 hover:scale-110"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <FaUserCircle />
-      </div>
-
-      {/* dropdown menu */}
-      <div 
-        className={`absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-1 z-50 border border-gray-100
-          transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
-          ${isOpen ? 'opacity-100 scale-100 translate-y-0 visible' : 'opacity-0 scale-95 -translate-y-2 invisible'}
-        `}
-      >
-        {user ? (
-          <>
-            {/* kalo sudah login*/}
-            <div className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors duration-200" onClick={handleProfile}>
-              <FaUserCircle className="text-gray-400 text-base" /> 
-              <span className="font-medium">Profile</span>
-            </div>
-            <div className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
-              <FaCog className="text-gray-400 text-base" /> 
-              <span className="font-medium">Settings</span>
-            </div>
-            <div className="border-t border-gray-100 my-1"></div>
-            <div className="flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-gray-50 cursor-pointer transition-colors duration-200" onClick={handleLogout}>
-              <FaSignOutAlt className="text-base" /> 
-              <span className="font-medium">Logout</span>
-            </div>
-          </>
-        ) : (
-          <>
-            {/* kalo belum login */}
-            <div className="flex items-center gap-3 px-4 py-3 text-sm text-green-600 hover:bg-gray-50 cursor-pointer transition-colors duration-200" onClick={handleLogin}>
-              <FaSignInAlt className="text-base" /> 
-              <span className="font-medium">Login</span>
-            </div>
-            <div className="flex items-center gap-3 px-4 py-3 text-sm text-blue-600 hover:bg-gray-50 cursor-pointer transition-colors duration-200" onClick={handleRegister}>
-              <FaUserPlus className="text-base" /> 
-              <span className="font-medium">Register</span>
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* jika menekan tombol login */}
-      <AnimatePresence>
-        {showLoginModal && (
-          <motion.div 
-            className="fixed inset-0 backdrop-blur-sm bg-black/40 flex items-center justify-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div 
-              className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-            >
-              <h2 className="text-2xl font-bold mb-3 text-center">Login</h2>
-              <form onSubmit={submitLogin} className="space-y-4">
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="w-full border p-2 rounded-md"
-                  required
-                  value={loginForm.email}
-                  onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
-                />
-                <input 
-                  type="password" 
-                  placeholder="Password" 
-                  className="w-full border p-2 rounded-md"
-                  required
-                  value={loginForm.password}
-                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                />
-                <button 
-                  type="submit" 
-                  className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors"
-                >
-                  Login
-                </button>
-              </form>
-              <button 
-                onClick={() => setShowLoginModal(false)}
-                className="mt-4 text-gray-500 hover:underline w-full text-center"
-              >
-                Cancel
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* jika menekan tombol register */}
-      <AnimatePresence>
-        {showRegisterModal && (
-          <motion.div 
-            className="fixed inset-0 backdrop-blur-sm bg-black/40 flex items-center justify-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div 
-              className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-            >
-              <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
-              <form onSubmit={submitRegister} className="space-y-4">
-                <input 
-                  type="text" 
-                  placeholder="Username" 
-                  className="w-full border p-2 rounded-md"
-                  required
-                  value={registerForm.username}
-                  onChange={(e) => setRegisterForm({ ...registerForm, username: e.target.value })}
-                />
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="w-full border p-2 rounded-md"
-                  required
-                  value={registerForm.email}
-                  onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
-                />
-                <input 
-                  type="password" 
-                  placeholder="Password" 
-                  className="w-full border p-2 rounded-md"
-                  required
-                  value={registerForm.password}
-                  onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
-                />
-                <button 
-                  type="submit" 
-                  className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
-                >
-                  Register
-                </button>
-              </form>
-              <button 
-                onClick={() => setShowRegisterModal(false)}
-                className="mt-4 text-gray-500 hover:underline w-full text-center"
-              >
-                Cancel
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
+    {/* icon profile */}
+    <div 
+      className="text-5xl text-gray-500 dark:text-gray-300 cursor-pointer hover:text-gray-700 dark:hover:text-white transition-transform duration-200 hover:scale-110"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <FaUserCircle />
     </div>
+  
+    {/* dropdown menu */}
+    <div 
+      className={`absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-1 z-50 border border-gray-100 dark:border-gray-700
+        transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+        ${isOpen ? 'opacity-100 scale-100 translate-y-0 visible' : 'opacity-0 scale-95 -translate-y-2 invisible'}
+      `}
+    >
+      {user ? (
+        <>
+          {/* logged in */}
+          <div className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onClick={handleProfile}>
+            <FaUserCircle className="text-gray-400 dark:text-gray-300 text-base" /> 
+            <span className="font-medium">Profile</span>
+          </div>
+          <div className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer">
+            <FaCog className="text-gray-400 dark:text-gray-300 text-base" /> 
+            <span className="font-medium">Settings</span>
+          </div>
+          <div className="border-t border-gray-100 dark:border-gray-700 my-1"></div>
+          <div className="flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onClick={handleLogout}>
+            <FaSignOutAlt className="text-base" /> 
+            <span className="font-medium">Logout</span>
+          </div>
+        </>
+      ) : (
+        <>
+          {/* not logged in */}
+          <div className="flex items-center gap-3 px-4 py-3 text-sm text-green-600 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onClick={handleLogin}>
+            <FaSignInAlt className="text-base" /> 
+            <span className="font-medium">Login</span>
+          </div>
+          <div className="flex items-center gap-3 px-4 py-3 text-sm text-blue-600 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onClick={handleRegister}>
+            <FaUserPlus className="text-base" /> 
+            <span className="font-medium">Register</span>
+          </div>
+        </>
+      )}
+    </div>
+  
+    {/* Login Modal */}
+    <AnimatePresence>
+      {showLoginModal && (
+        <motion.div 
+          className="fixed inset-0 backdrop-blur-sm bg-black/40 flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div 
+            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+          >
+            <h2 className="text-2xl font-bold mb-3 text-center">Login</h2>
+            <form onSubmit={submitLogin} className="space-y-4">
+              <input 
+                type="email" 
+                placeholder="Email" 
+                className="w-full border p-2 rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                required
+                value={loginForm.email}
+                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+              />
+              <input 
+                type="password" 
+                placeholder="Password" 
+                className="w-full border p-2 rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                required
+                value={loginForm.password}
+                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+              />
+              <button 
+                type="submit" 
+                className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors"
+              >
+                Login
+              </button>
+            </form>
+            <button 
+              onClick={() => setShowLoginModal(false)}
+              className="mt-4 text-gray-500 dark:text-gray-300 hover:underline w-full text-center"
+            >
+              Cancel
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  
+    {/* Register Modal */}
+    <AnimatePresence>
+      {showRegisterModal && (
+        <motion.div 
+          className="fixed inset-0 backdrop-blur-sm bg-black/40 flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div 
+            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+          >
+            <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+            <form onSubmit={submitRegister} className="space-y-4">
+              <input 
+                type="text" 
+                placeholder="Username" 
+                className="w-full border p-2 rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                required
+                value={registerForm.username}
+                onChange={(e) => setRegisterForm({ ...registerForm, username: e.target.value })}
+              />
+              <input 
+                type="email" 
+                placeholder="Email" 
+                className="w-full border p-2 rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                required
+                value={registerForm.email}
+                onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
+              />
+              <input 
+                type="password" 
+                placeholder="Password" 
+                className="w-full border p-2 rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                required
+                value={registerForm.password}
+                onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
+              />
+              <button 
+                type="submit" 
+                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+              >
+                Register
+              </button>
+            </form>
+            <button 
+              onClick={() => setShowRegisterModal(false)}
+              className="mt-4 text-gray-500 dark:text-gray-300 hover:underline w-full text-center"
+            >
+              Cancel
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  
+    <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
+  </div>
   );
-}
+}  
